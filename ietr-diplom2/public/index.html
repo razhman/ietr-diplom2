@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ИЭТР по Cherry SCR372</title>
+  <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css"
+  type="text/css">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+ <link rel="stylesheet" href="css/main.css">
+ <link rel="stylesheet" href="css/navbar.css">  
+</head>
+<body>
+  
+  <div id="viewer" onclick="onViewerClick()">
+    <img src="../img/forge.png" class="logo">
+</div>
+<span id="navbutton" style="font-size:30px;cursor:pointer" onclick="openNav()"> Меню ☰</span>
+<div id="sidebar">
+  <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+      <ul>
+          <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
+          <li><a href="#" onclick="selectionPart()">Информация о детали</a></li>
+          <li><a href="#">Обслуживание</a></li>
+          <ul>
+              <li><a href="#">Процедуры обслуживания</a></li>
+              <ul class="sublist">
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+              </ul>
+              <li><a href="#">Инструменты и запасные части</a></li>
+          </ul>
+          <li><a href="#">Ремонт</a></li>
+          <ul>
+              <li><a href="#">Процедуры ремонта</a></li>
+              <li><a href="#">Инструменты и запасные части</a></li>
+          </ul>
+      </ul>
+  </div>
+  <div>
+      
+      <!-- <img class="print-doc" style="width:30px;cursor:pointer;margin:5px;" onclick="CallPrint('info')"
+          src="../img/printer.png" alt="Распечатать"> -->
+  </div>
+
+  <div id="info">
+      <!-- <h1>Информация о двигателе</h1> -->
+      <p>Первое поколение данных силовых агрегатов появилось в 1991 году и сперва называлось Zeta, но из-за спора с компанией Lancia за торговую марку вскоре обрело привычное название Zetec. Это были вполне классические для своего времени 4-цилиндровые моторы с чугунным блоком, ременным приводом ГРМ, алюминиевой 16-клапанной DOHC головкой и гидрокомпенсаторами.</p>
+      <img src="../img/dvigatel-ford-zetec-1-pok-pod-kapotom.jpg" style="width:100%;" alt="Zetec">
+  </div>
+
+</div>
+</div>
+
+ <!-- Lib Scripts -->
+
+ <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+ integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+ integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+ </script>
+  <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"></script>
+
+
+
+   <!-- My Scripts -->
+   <script src="scripts/viewer.js"></script>
+   <script src="scripts/main.js"></script>
+</body>
+</html>
