@@ -1,1 +1,0 @@
-# ietr-diplom2
