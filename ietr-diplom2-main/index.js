@@ -59,4 +59,23 @@ app.listen(port, () => {
   console.log('Net address:  http://' + ipAddress + ':' + port)
 })
 
+const sqlite3 = requite('sqlite3').verbose()
+var parts = ''
+//open the database
+let db = new sqlite3.Database('database.db', sqlite3.OPEN_READONLY, (err)=>{
+  if(err){
+    console.log(err.message)
+  }
+  else console.log('Connected to the database.')
+})
 
+db.all("SELECT * FROM parts", [], (err, rows) => {
+  if (err){
+    console.error(err.message)
+  }
+  parts = rows
+})
+
+app.get('/parts', (req, res)=>{
+  res.send(parts)
+})

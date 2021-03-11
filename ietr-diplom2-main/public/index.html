@@ -19,43 +19,45 @@
   <div id="viewer" onclick="onViewerClick()">
     <img src="../img/forge.png" class="logo">
 </div>
-<span id="navbutton" style="font-size:30px;cursor:pointer" onclick="openNav()"> Меню ☰</span>
+
 <div id="sidebar">
-  <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
-      <ul>
-          <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
-          <li><a href="#" onclick="selectionPart()">Информация о детали</a></li>
-          <li><a href="#">Обслуживание</a></li>
-          <ul>
-              <li><a href="#">Процедуры обслуживания</a></li>
-              <ul class="sublist">
-                  <li><a href="#">1</a></li>
-                  <li><a href="#">2</a></li>
-              </ul>
-              <li><a href="#">Инструменты и запасные части</a></li>
-          </ul>
-          <li><a href="#">Ремонт</a></li>
-          <ul>
-              <li><a href="#">Процедуры ремонта</a></li>
-              <li><a href="#">Инструменты и запасные части</a></li>
-          </ul>
-      </ul>
-  </div>
-  <div>
-      
-      <!-- <img class="print-doc" style="width:30px;cursor:pointer;margin:5px;" onclick="CallPrint('info')"
-          src="../img/printer.png" alt="Распечатать"> -->
-  </div>
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        <ul>
+            <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
+            <li><a href="#" onclick="selectionPart()">Информация о детали</a></li>
+            <li><a href="#">Обслуживание</a></li>
+            <ul>
+                <li><a href="#">Процедуры обслуживания</a></li>
+                <ul class="sublist">
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                </ul>
+                <li><a href="#">Инструменты и запасные части</a></li>
+            </ul>
+            <li><a href="#">Ремонт</a></li>
+            <ul>
+                <li><a href="#">Процедуры ремонта</a></li>
+                <li><a href="#">Инструменты и запасные части</a></li>
+            </ul>
+        </ul>
+    </div>
+    <div>
+        <span id="navbutton" style="font-size:30px;cursor:pointer" onclick="openNav()">☰ Меню</span>
+        <img class="print-doc" style="width:30px;cursor:pointer;margin:5px;" onclick="CallPrint('info')"
+            src="../img/printer.png" alt="Распечатать">
+    </div>
 
-  <div id="info">
-      <!-- <h1>Информация о двигателе</h1> -->
-      <p>Первое поколение данных силовых агрегатов появилось в 1991 году и сперва называлось Zeta, но из-за спора с компанией Lancia за торговую марку вскоре обрело привычное название Zetec. Это были вполне классические для своего времени 4-цилиндровые моторы с чугунным блоком, ременным приводом ГРМ, алюминиевой 16-клапанной DOHC головкой и гидрокомпенсаторами.</p>
-      <img src="../img/dvigatel-ford-zetec-1-pok-pod-kapotom.jpg" style="width:100%;" alt="Zetec">
-  </div>
+    <div id="info">
+        <h1>Информация о двигателе</h1>
+        <p>Первое поколение данных силовых агрегатов появилось в 1991 году и сперва называлось Zeta, но из-за спора с компанией Lancia за торговую марку вскоре обрело привычное название Zetec. Это были вполне классические для своего времени 4-цилиндровые моторы с чугунным блоком, ременным приводом ГРМ, алюминиевой 16-клапанной DOHC головкой и гидрокомпенсаторами.</p>
+        <img src="../img/dvigatel-ford-zetec-1-pok-pod-kapotom.jpg" style="width:100%;" alt="Zetec">
+    </div>
 
 </div>
-</div>
+
+
+
 
  <!-- Lib Scripts -->
 

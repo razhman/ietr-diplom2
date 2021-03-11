@@ -5,7 +5,7 @@ body {
   height: 100%;
   display: grid;
   grid-template-columns: 35% 65%;
-  grid-template-rows: 40% 60%;
+  grid-template-rows: 100% 100%;
   font-family: 'Open Sans', sans-serif;
 }
 #viewer {
@@ -35,7 +35,7 @@ body {
       grid-column-start: 1;
       grid-column-end: 4;
       grid-row-start: 1;
-      grid-row-end: 2;
+      grid-row-end: 4;
   }
 }
 

@@ -1,3 +1,7 @@
+.sidebar{
+  
+}
+
 .sidenav {
   height: 100%;
   width: 0;
@@ -39,11 +43,15 @@
 }
 
 #navbutton{
-  position:fixed;
+  position:relative;
   left:20px;
 }
 
 .sublist a{
   font-size: 18px;
   padding: 4px;
+}
+
+.print-doc{
+  float: right;
 }
