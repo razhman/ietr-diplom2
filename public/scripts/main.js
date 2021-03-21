@@ -1,12 +1,21 @@
-function showEngineDescription() {
+async function showEngineDescription() {
+  $.get('http://localhost:3000/parts', (data) => {
+    $('#info').html(data[0].description)
+  })
   closeNav()
+}
+
+function showPartDescription(d) {
+  $.get('http://localhost:3000/parts', (data) => {
+    $('#partdesc').html(data[d].description)
+  })
 }
 
 function openNav() {
   document.getElementById('mySidenav').style.width = '300px'
   const info = document.getElementById('info')
   info.onclick = () => {
-      closeNav()
+    closeNav()
   }
 }
 
@@ -44,11 +53,11 @@ function CallPrint(strid) {
 }
 
 function selectionPart() {
-  document.getElementById('info').innerHTML = `<h1>Информация о детали:</h1>
+  document.getElementById('info').innerHTML = `<h1><b>Информация о детали:</b></h1>
     <div id="partdesc">
         <p>Выберите деталь</p>
     </div>`
-    const viewer = document.getElementById('viewer')
-    viewer.style.height = '920px'
+  const viewer = document.getElementById('viewer')
+  viewer.style.height = '920px'
   closeNav()
 }

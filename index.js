@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const FORGE_CLIENT_ID = 'XgCmlo17bpTMdddGvWhuG9bH9Vb2BCzp'
 const FORGE_CLIENT_SECRET = '9Q9QpzcSClCJndQO'
 
-
 const app = express()
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'))
@@ -62,20 +61,19 @@ app.listen(port, () => {
 const sqlite3 = require('sqlite3').verbose()
 var parts = ''
 //open the database
-let db = new sqlite3.Database('database.db', sqlite3.OPEN_READONLY, (err)=>{
-  if(err){
+let db = new sqlite3.Database('database.db', sqlite3.OPEN_READONLY, (err) => {
+  if (err) {
     console.log(err.message)
-  }
-  else console.log('Connected to the database.')
+  } else console.log('Connected to the database.')
 })
 
-db.all("SELECT * FROM parts", [], (err, rows) => {
-  if (err){
+db.all('SELECT * FROM parts', [], (err, rows) => {
+  if (err) {
     console.error(err.message)
   }
   parts = rows
+  console.log(parts)
 })
-
-app.get('/parts', (req, res)=>{
+app.get('/parts', (req, res) => {
   res.send(parts)
 })

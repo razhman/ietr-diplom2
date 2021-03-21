@@ -117,7 +117,7 @@ function onViewerClick(){
         let detail = viewer.getSelection()[0];
         if(detail) {
             console.log(detail);
-            //showPartDescription(detail);
+            showPartDescription(detail);
         }
     }
 }
