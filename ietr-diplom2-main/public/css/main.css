@@ -5,7 +5,8 @@ body {
   height: 100%;
   display: grid;
   grid-template-columns:40% 60%;
-  grid-template-rows: 65% 70%;
+  /* grid-template-rows: 65% 91%; */
+  grid-template-rows: 100% 100%;
   font-family: 'Open Sans', sans-serif;
 }
 #viewer {
@@ -25,7 +26,7 @@ body {
       grid-column-end: 4;
       grid-row-start: 2;
       grid-row-end: 3;
-      /* overflow: scroll; */
+      overflow: scroll;
       overflow-x: hidden;
       scroll-behavior: smooth;
   }
