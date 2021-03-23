@@ -105,6 +105,13 @@ function selectionPart() {
 }
 
 function showFirstProcedureDescription() {
-  document.getElementById('info').innerHTML = '<button type="button" class="btn btn-primary">Начать анимацию</button>'
+  // document.getElementById('info').innerHTML = '<button type="button" class="btn btn-primary">Начать анимацию</button>'
+  document.getElementById('info').innerHTML = `<p>Выберите деталь</p>
+  <p>Выберите деталь</p>
+  <p>Выберите деталь</p>
+  <p>Выберите деталь</p>
+  <p>Выберите деталь</p>
+  <p>Выберите деталь</p>
+ `
   closeNav()
 }
