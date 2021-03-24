@@ -1,4 +1,4 @@
-
+/* 
 .sidenav {
   height: 100%;
   width: 0;
@@ -51,4 +51,98 @@
 
 .print-doc{
   float: right;
+} */
+
+
+/*Global*/
+/* html, body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: helvetica, sans-serif;
+} */
+
+/*Func*/
+
+/* .multi-level, .item ul, .nav input[type="checkbox"] {
+  display: none;
+} */
+.multi-level{
+  margin-top: 1rem;
 }
+.item ul, .item input[type="checkbox"] {
+  display: none;
+}
+#menu:checked ~ .multi-level, .item input:checked ~ ul {
+  display: block;
+}
+
+/*Arrow*/
+
+.arrow {
+  width: 10px;
+  height: 10px;
+  vertical-align: middle;
+  float: left;
+  z-index: 0;
+  margin: 17px 1em 0 2em;
+}
+.item input + .arrow {
+  transform: rotate(-90deg);
+  transition: 0.1s;
+}
+.item input:checked + .arrow {
+  transform: rotate(0deg);
+  transition: 0.1s;
+}
+
+
+
+/*Styles*/
+
+label:hover {
+  cursor: pointer;
+}
+label {
+  width: 100%;
+  display: block;
+  z-index: 3;
+  position: relative;
+}
+
+
+
+
+.item ul, .item li, label {
+  line-height: 40px;
+  margin: 0;
+  padding: 0 2em;
+  list-style: none;
+  text-decoration: none;
+  color: #90A4AE;
+  font-weight: 100;
+  width: 100%;
+}
+.item ul {
+  /* padding: 0 0.25em; */
+  padding: 0 0 0.25em;
+}
+.item li a {
+  line-height: 40px;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  color: #90A4AE;
+  font-weight: 100;
+}
+
+
+
+
+
+
+
+
+
+
+

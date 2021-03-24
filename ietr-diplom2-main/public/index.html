@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,13 +14,9 @@
  <link rel="stylesheet" href="css/main.css">
  <link rel="stylesheet" href="css/navbar.css">  
 </head>
+
 <body>
-
-  <!-- <div id="viewer" onclick="onViewerClick()">
-    <img src="../img/forge.png" class="logo">
-</div> -->
-
-<div id="sidebar">
+<!-- <div id="sidebar">
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
         <ul>
@@ -48,20 +43,64 @@
         <img class="print-doc" style="width:30px;cursor:pointer;margin:5px;" onclick="CallPrint('info')"
             src="../img/print.png" alt="Распечатать">
     </div>
-</div>
+    </div> -->
 
-    <div id="viewer" onclick="onViewerClick()">
-        <img src="../img/forge.png" class="logo">
+    <div class="multi-level">
+        <div class="item">
+            <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
+            <li><a href="#" onclick="selectionPart()">Информация о детали</a></li>
+            <!-- <input type="checkbox" id="A"/>
+            <img src="img/Arrow.png" class="arrow"><label for="A">Обслуживание</label>
+            
+            <ul>
+                <li><a href="#">Branding</a></li>
+                <li><a href="#">Web/App Development</a></li>
+                <li><a href="#">Internet Marketing and SEO</a></li>
+            </ul> -->
+        </div>
+        <div class="item">
+            <input type="checkbox" id="B"/>
+            <img src="img/Arrow.png" class="arrow"><label for="B">Обслуживание</label>
+            
+            <ul>
+                <li><div class="sub-item">
+                    <input type="checkbox" id="B-A"/>
+                    <img src="img/Arrow.png" class="arrow"><label for="B-A">Процедуры обслуживания</label>
+                    
+                    <ul>
+                        <li><a href="#" onclick="showFirstProcedureDescription()">1 процедура</a></li>
+                        <li><a href="#">2 процедура</a></li>
+                    </ul>
+                </div></li>
+                <li>
+                    <li><a href="#">Инструменты и запасные части</a></li>
+                    
+                    <!-- <ul>
+                        <li><a href="#">Front end Developer</a></li>
+                        <li><a href="#">Back end Developer</a></li>
+                    </ul> -->
+                    
+                </li>               
+            </ul>
+        </div>
+        <div class="item">
+            <input type="checkbox" id="C"/>
+            <img src="img/Arrow.png" class="arrow"><label for="C">Ремонт</label>
+            
+            <ul>
+                <li><a href="#">Процедуры ремонта</a></li>
+                <li><a href="#">Инструменты и запасные части</a></li>
+            </ul>
+        </div>
     </div>
+
+    <div id="viewer" onclick="onViewerClick()"></div>
 
     <div id="info">
         <h2>Информация о двигателе</h2>
         <p>Данная модель двигателя от известного производителя машиностроения CHERY (КНР). Chery входит в список «10 лучших инновационных предприятий Китая», являясь единственным автопроизводителем, получившим высокий титул не только в Китае, но и во всем мире. Двигатель Chery SQR 372 используется в производстве снегоболотоходов: Пантера, Montero, ХВН 8Х8, Мини джипах: Discovery Classic и Discovery Sport, а так же в различных багги и авто. Также данная модель двигателя  используется в производстве собственных снегоболотоходов и багги. Двигатель удобен в эксплуатации и не требует больших затрат в осуществлении ремонта и замене запасных частей.</p>
-        <img src="https://sc04.alicdn.com/kf/HTB1jjNSq25TBuNjSspmq6yDRVXai.jpg" style="width:50%;" alt="Cherry">
+        <img src="https://sc04.alicdn.com/kf/HTB1jjNSq25TBuNjSspmq6yDRVXai.jpg" style="width:100%;" alt="Cherry">
     </div>
-</div>
-<!-- </div> -->
-
 
 
  <!-- Lib Scripts -->
