@@ -68,8 +68,9 @@
   display: none;
 } */
 .multi-level{
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
+
 .item ul, .item input[type="checkbox"] {
   display: none;
 }
