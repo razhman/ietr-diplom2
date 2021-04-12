@@ -1,69 +1,43 @@
 async function showEngineDescription() {
-  $.get('http://localhost:3000/parts', (data) => {
+  $.get('http://localhost:3001/parts', (data) => {
     $('#info').html(data[0].description)
   })
-  //closeNav()
 }
 
 function showPartDescription(d) {
-  $.get('http://localhost:3000/parts', (data) => {
-    $('#partdesc').html(data[d].description)
+  $.get('http://localhost:3001/parts', (data) => {
+    $('#partDescr').html(data[d].description)
   })
 }
 
-// function openNav() {
-//   document.getElementById('mySidenav').style.width = '300px'
-//   const info = document.getElementById('info')
-//   info.onclick = () => {
-//     closeNav()
-//   }
- 
-// }
-
-// function closeNav() {
-//   document.getElementById('mySidenav').style.width = '0'
-// }
-
-// function CallPrint(strid) {
-//   var prtContent = document.getElementById(strid)
-//   var prtCSS = `<style>
-//     p {
-//         font-weight: bold;
-//     }
-//     body {
-//         width: 100%;
-//         grid-template-columns: 65% 35%;
-//         grid-template-rows: 60% 40%;
-//         font-family: "Open Sans", sans-serif;
-//     }
-//     </style>`
-//   var WinPrint = window.open(
-//     '',
-//     '',
-//     'left=50,top=50,width=800,height=640,toolbar=0,scrollbars=1,status=0'
-//   )
-//   WinPrint.document.write('<head>')
-//   WinPrint.document.write(prtCSS)
-//   WinPrint.document.write('</head>')
-//   WinPrint.document.write('<body>')
-//   WinPrint.document.write(prtContent.innerHTML)
-//   WinPrint.document.write('</body>')
-//   WinPrint.document.close()
-//   WinPrint.focus()
-//   WinPrint.print()
-// }
+async function showProcDescr(id) {
+  $.get('http://localhost:3001/procedures', (data) => {
+    $('#info').html(data[id].descr)
+  })
+}
 
 function selectionPart() {
-  document.getElementById('info').innerHTML = `<h1><b>Информация о детали:</b></h1>
-    <div id="partdesc">
+  document.getElementById(
+    'info'
+  ).innerHTML = `<h3><b>Информация о детали:</b></h3>
+    <div id="partDescr">
         <p>Выберите деталь</p>      
     </div>`
-  
-  closeNav()
 }
 
-function showFirstProcedureDescription() {
-   document.getElementById('info').innerHTML = '<button type="button" class="btn btn-primary">Начать анимацию</button>'
- 
-  //closeNav()
+function startAnimation(id) {
+  loadAnimation(doc2, id)
 }
+
+async function showAnnotations(id) {
+  $.get('http://localhost:3001/procedures', (data) => {
+    annotations = JSON.parse(data[id].annotations)
+  })
+}
+// function showProcDescr() {
+//   document.getElementById('info').innerHTML =
+//     `<div id ="info"></div>
+//     <button type="button" class="btn btn-primary">Начать анимацию</button>`
+
+//   //closeNav()
+// }

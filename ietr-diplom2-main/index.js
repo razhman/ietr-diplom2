@@ -7,7 +7,7 @@ const FORGE_CLIENT_SECRET = '9Q9QpzcSClCJndQO'
 const app = express()
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/public'))
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 3001
 
 const querystring = require('querystring')
 let access_token = ''
@@ -74,6 +74,18 @@ db.all('SELECT * FROM parts', [], (err, rows) => {
   parts = rows
   console.log(parts)
 })
+
 app.get('/parts', (req, res) => {
   res.send(parts)
+})
+
+db.all('SELECT * FROM procedures', [], (err, rows) => {
+  if (err) {
+    console.error(err.message)
+  }
+  procedures = rows
+})
+
+app.get('/procedures', function (req, res) {
+  res.send(procedures)
 })

@@ -1,6 +1,8 @@
-let viewer
-let FORGE_MODEL_URN =
-  'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTAzLTA5LTEwLTMwLTIxLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2Ny5mM2Q'
+let viewer,
+  doc2,
+  currentAnimId,
+  isAnimationStarted = false,
+  FORGE_MODEL_URN = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA0LTEyLTE0LTMxLTE3LWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2MTIuZjNk'
 const options = {
   env: 'AutodeskProduction',
   api: 'derivativeV2', // for models uploaded to EMEA change this option to 'derivativeV2_EU'
@@ -79,6 +81,8 @@ function loadAnimation(doc, id) {
   let animationUrl = doc.getViewablePath(animations.children[id])
 
   viewer.start(animationUrl, {}, onLoadModelSuccess, onLoadModelError)
+  currentAnimId = id
+  showAnnotations(id)
 }
 
 function onLoadModelSuccess(model) {
@@ -89,6 +93,8 @@ function onLoadModelSuccess(model) {
 
   viewer.addEventListener(Autodesk.Viewing.ANIMATION_READY_EVENT, (e) => {
     animationExt = viewer.getExtension('Autodesk.Fusion360.Animation')
+    isAnimationStarted = true
+    animationExt.play()
     //checkSeconds();
   })
 }
@@ -100,12 +106,14 @@ function onLoadModelError(viewerErrorCode) {
 function onDocumentLoadSuccess(doc) {
   const defaultModel = doc.getRoot().getDefaultGeometry()
   viewer.loadDocumentNode(doc, defaultModel)
+  doc2 = doc
+  
 
-  let animationsFolder = doc
-    .getRoot()
-    .search({ type: 'folder', role: 'animation' })
-  if (animationsFolder.length == 0) console.error('Модель не содержит анимаций')
-  else loadAnimation(doc, 0)
+  // let animationsFolder = doc
+  //   .getRoot()
+  //   .search({ type: 'folder', role: 'animation' })
+  // if (animationsFolder.length == 0) console.error('Модель не содержит анимаций')
+  // else loadAnimation(doc, 0)
 }
 
 function onDocumentLoadFailure() {
@@ -113,7 +121,7 @@ function onDocumentLoadFailure() {
 }
 
 function onViewerClick() {
-  if (document.getElementById('partdesc')) {
+  if (document.getElementById('partDescr')) {
     let detail = viewer.getSelection()[0]
     if (detail) {
       console.log(detail)

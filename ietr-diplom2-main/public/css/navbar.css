@@ -1,72 +1,3 @@
-/* 
-.sidenav {
-  height: 100%;
-  width: 0;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
-  transition: 0.3s;
-}
-
-
-.sidenav a:hover {
-  color: #f1f1f1;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  left: 10px;
-  font-size: 36px;
-  margin-right: 50px;
-}
-
-@media screen and (max-height: 450px) {
-.sidenav {padding-top: 15px;}
-.sidenav a {font-size: 18px;}
-}
-
-#navbutton{
-  position:relative;
-  left:20px;
-}
-
-.sublist a{
-  font-size: 18px;
-  padding: 4px;
-}
-
-.print-doc{
-  float: right;
-} */
-
-
-/*Global*/
-/* html, body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: helvetica, sans-serif;
-} */
-
-/*Func*/
-
-/* .multi-level, .item ul, .nav input[type="checkbox"] {
-  display: none;
-} */
 .multi-level{
   margin-top: 2rem;
 }
@@ -137,7 +68,21 @@ label {
   font-weight: 100;
 }
 
+@media (max-width: 1200px){
+  .item ul, .item li, label{
+    font-size: 12px;
+  }
+}
 
+@media (max-width: 768px){
+  .multi-level{
+    margin-top: 1rem;
+  }
+  .item ul, .item li, label{
+    padding: 0 1em;
+    font-size: 10px;
+  }
+}
 
 
 
