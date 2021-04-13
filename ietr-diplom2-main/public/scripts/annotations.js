@@ -1,4 +1,5 @@
 let annotations = {}
+//const timer
 
 function setAnnotationPosition(id) {
   let p2 = getCenterOfNodeId(annotations[id].nodeid);
@@ -83,8 +84,8 @@ function hideAnnotation(id) {
 // }
 // }
 
-let interval = setInterval(animTick, 100);
-function animTick() {
+let interval = setInterval(animTimer, 100);
+function animTimer() {
   if (isAnimationStarted) {
       let animExt = viewer.getExtension("Autodesk.Fusion360.Animation");
 
