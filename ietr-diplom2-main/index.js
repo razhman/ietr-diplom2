@@ -67,7 +67,7 @@ let db = new sqlite3.Database('database.db', sqlite3.OPEN_READONLY, (err) => {
   } else console.log('Connected to the database.')
 })
 
-db.all('SELECT * FROM parts', [], (err, rows) => {
+db.all('SELECT * FROM parts2', [], (err, rows) => {
   if (err) {
     console.error(err.message)
   }
@@ -75,7 +75,7 @@ db.all('SELECT * FROM parts', [], (err, rows) => {
   console.log(parts)
 })
 
-app.get('/parts', (req, res) => {
+app.get('/parts2', (req, res) => {
   res.send(parts)
 })
 
@@ -86,6 +86,15 @@ db.all('SELECT * FROM procedures', [], (err, rows) => {
   procedures = rows
 })
 
-app.get('/procedures', function (req, res) {
+app.get('/procedures', (req, res) => {
   res.send(procedures)
+})
+
+db.all('SELECT * FROM characteristics', [], (err, rows) => {
+  if (err) {
+    console.error(err.message)
+  }
+  app.get('/characteristics', (req, res) => {
+    res.send(rows)
+  })
 })

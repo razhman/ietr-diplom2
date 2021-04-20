@@ -48,7 +48,8 @@ label {
 .item ul, .item li, label {
   line-height: 40px;
   margin: 0;
-  padding: 0 2em;
+  /* padding: 0 2em; */
+  padding: 0 1em;
   list-style: none;
   text-decoration: none;
   color: #90A4AE;
@@ -57,11 +58,11 @@ label {
 }
 .item ul {
   /* padding: 0 0.25em; */
-  padding: 0 0 0.25em;
+  /* padding: 0 0 0.25em; */
 }
 .item li a {
   line-height: 40px;
-  margin: 0;
+  margin: 0 auto;
   list-style: none;
   text-decoration: none;
   color: #90A4AE;
