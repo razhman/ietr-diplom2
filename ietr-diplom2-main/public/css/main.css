@@ -12,7 +12,9 @@ body {
 }
 
 #info {
-  padding: 20px;
+  margin-top: 2rem;
+  padding: 10px;
+  padding-right: 10px;
   grid-column-start: 3;
   grid-column-end: 3;
   grid-row-start: 1;
