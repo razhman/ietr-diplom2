@@ -1,5 +1,5 @@
 let annotations = {}
-//const timer
+var timer
 
 function setAnnotationPosition(id) {
   let p2 = getCenterOfNodeId(annotations[id].nodeid);
@@ -112,3 +112,4 @@ function deleteAllAnnotations() {
       document.querySelector("#annotation-" + id).remove();
   }
 }
+
