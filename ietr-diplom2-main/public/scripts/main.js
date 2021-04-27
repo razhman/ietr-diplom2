@@ -20,43 +20,47 @@ async function showPartDescription(id) {
   })
 }
 
-async function showStructure(){
+async function showDetailsTable() {
   $.get('http://localhost:3001/parts2', (data) => {
-    let contentstable = `<table class="table contentstable">
-    <thead class="thead-light">
+    let detailsTable = `<table class="table detailsTable">
+    <thead class="thead-dark">
       <tr>
-        <th scope="col">Компонент</th>
+        <th scope="col">Деталь</th>
         <th scope="col">Описание</th>
       </tr>
     </thead>
-    <tbody>`;
+    <tbody>`
 
-        data = sortComponents(data);
-        for (let i = 1; i < data.length; i++) {
-
-            contentstable += `<tr>
-        <td><a href="javascript:viewer.isolate(` + data[i].node_ids + `)">` + data[i].name + `</a></td>
-        <td>` + data[i].description + `</td>
+    data = sortDetails(data)
+    for (let i = 1; i < data.length; i++) {
+      detailsTable +=
+        `<tr>
+        <td><a href="javascript:viewer.isolate(` +
+        data[i].node_ids +
+        `)">` +
+        data[i].name +
+        `</a></td>
+        <td>` +
+        data[i].description +
+        `</td>
         </tr>`
-        }
+    }
 
-        contentstable += "</tbody></table>"
+    detailsTable += '</tbody></table>'
 
-        $("#info").html(contentstable);
-})
-if (isAnimationStarted) stopAnimation()
+    $('#info').html(detailsTable)
+  })
+  if (isAnimationStarted) stopAnimation()
 }
-function sortComponents(data) {
-  let newdata = data;
-  newdata.splice(8, 0, newdata[61]);
-  newdata.splice(53, 0, newdata[63]);
-  newdata.splice(53, 0, newdata[65]);
-  newdata.splice(53, 0, newdata[67]);
-  newdata.splice(65, 4);
-  return newdata;
+function sortDetails(data) {
+  let newData = data
+  newData.splice(8, 0, newData[61])
+  newData.splice(53, 0, newData[63])
+  newData.splice(53, 0, newData[65])
+  newData.splice(53, 0, newData[67])
+  newData.splice(65, 4)
+  return newData
 }
-
-
 
 async function showProcDescr(id) {
   $.get('http://localhost:3001/procedures', (data) => {
@@ -78,9 +82,9 @@ function startAnimation(id) {
   loadAnimation(doc2, id)
 }
 function stopAnimation() {
-  clearInterval(timer);
-  loadModel();
-  isAnimationStarted = false;
+  clearInterval(timer)
+  loadModel()
+  isAnimationStarted = false
 }
 
 async function showAnnotations(id) {

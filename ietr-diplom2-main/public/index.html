@@ -21,7 +21,7 @@
     <div class="multi-level">
         <div class="item">
             <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
-            <li><a href="#" onclick="showStructure()">Состав двигателя</a></li>
+            <li><a href="#" onclick="showDetailsTable()">Состав двигателя</a></li>
             <li><a href="#" onclick="selectionPart()">Информация о детали</a></li>
         </div>
         <div class="item">
@@ -33,23 +33,17 @@
                     <input type="checkbox" id="B-A"/>
                     <img src="img/Arrow.png" class="arrow"><label for="B-A">Процедуры обслуживания</label>
                     <ul id="maintainance">
-                        <!-- <li><a href="#" onclick="showProcDescr(0)">1 процедура</a></li>
-                        <li><a href="#" onclick="showProcDescr(1)">2 процедура</a></li> -->
                     </ul>
                 </div></li>
-                <li>
+                <!-- <li>
                     <li><a href="#">Инструменты и запасные части</a></li>
-                    
-                    
-                </li>               
+                </li>                -->
             </ul>
         </div>
         <div class="item">
             <input type="checkbox" id="C"/>
             <img src="img/Arrow.png" class="arrow"><label for="C">Ремонт</label>
-            <ul>
-                <li><a href="#">Процедуры ремонта</a></li>
-                <li><a href="#">Инструменты и запасные части</a></li>
+            <ul id="repair">
             </ul>
         </div>
         <div class="item">
