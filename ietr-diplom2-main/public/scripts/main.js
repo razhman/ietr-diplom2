@@ -115,6 +115,7 @@ async function showDiagnostics() {
 async function showProcedures() {
   $.get('http://localhost:3001/procedures', (data) => {
     let mn = ``
+    let repair = ``
     for (let i = 0; i < data.length; i++) {
       if (data[i].type == 'maintainance')
         mn +=
@@ -123,7 +124,15 @@ async function showProcedures() {
           `)">` +
           data[i].name +
           `</a></li>`
+      else
+        repair +=
+          `<li><a href="#" onclick = "showProcDescr(` +
+          i +
+          `)">` +
+          data[i].name +
+          `</a></li>`
       $('#maintainance').html(mn)
+      $('#repair').html(repair)
     }
   })
 }
