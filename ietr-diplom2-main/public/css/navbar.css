@@ -66,12 +66,6 @@ label {
   line-height: 25px;
   margin-left: 35px;
 }
-#repair li{
-  padding-left: 0;
-  list-style: circle;
-  line-height: 25px;
-  margin-left: 35px;
-}
 .item li a {
   line-height: 40px;
   margin: 0 auto;
