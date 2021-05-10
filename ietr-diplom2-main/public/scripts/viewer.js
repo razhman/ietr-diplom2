@@ -2,7 +2,10 @@ let viewer,
   doc2,
   currentAnimId,
   isAnimationStarted = false,
-  FORGE_MODEL_URN = 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA0LTEyLTE0LTMxLTE3LWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2MTIuZjNk'
+  FORGE_MODEL_URN = 
+  
+  /*'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA0LTEyLTE0LTMxLTE3LWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2MTIuZjNk'*/
+  'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA1LTA5LTEzLTQxLTQwLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2NTIuZjNk'
 const options = {
   env: 'AutodeskProduction',
   api: 'derivativeV2', // for models uploaded to EMEA change this option to 'derivativeV2_EU'
