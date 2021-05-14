@@ -1,4 +1,4 @@
-.multi-level{
+/* .multi-level{
   margin-top: 2rem;
 }
 
@@ -7,11 +7,11 @@
 }
 #menu:checked ~ .multi-level, .item input:checked ~ ul {
   display: block;
-}
+} */
 
 /*Arrow*/
 
-.arrow {
+/* .arrow {
   width: 10px;
   height: 10px;
   vertical-align: middle;
@@ -26,13 +26,13 @@
 .item input:checked + .arrow {
   transform: rotate(0deg);
   transition: 0.2s;
-}
+} */
 
 
 
 /*Styles*/
 
-label:hover {
+/* label:hover {
   cursor: pointer;
 }
 label {
@@ -40,27 +40,23 @@ label {
   display: block;
   z-index: 3;
   position: relative;
-}
+} */
 
 
 
 
-.item ul, .item li, label {
+/* .item ul, .item li, label {
   line-height: 40px;
   margin: 0;
-  /* padding: 0 2em; */
   padding: 0 1em;
   list-style: none;
   text-decoration: none;
   color: #90A4AE;
   font-weight: 100;
   width: 100%;
-}
-.item ul {
-  /* padding: 0 0.25em; */
-  /* padding: 0 0 0.25em; */
-}
-#maintainance li{
+} */
+
+/* #maintainance li{
   padding-left: 0;
   list-style: circle;
   line-height: 25px;
@@ -95,7 +91,7 @@ label {
     padding: 0 1em;
     font-size: 10px;
   }
-}
+} */
 
 
 
