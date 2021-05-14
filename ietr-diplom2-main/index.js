@@ -98,3 +98,13 @@ db.all('SELECT * FROM characteristics', [], (err, rows) => {
     res.send(rows)
   })
 })
+
+
+db.all('SELECT * FROM tools', [], (err, rows) => {
+  if (err) {
+    console.error(err.message)
+  }
+  app.get('/tools', (req, res) => {
+    res.send(rows)
+  })
+})

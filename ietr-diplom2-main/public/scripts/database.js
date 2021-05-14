@@ -120,3 +120,30 @@ async function showProcedures() {
     }
   })
 }
+
+async function showTools() {
+  let procName = ``
+  $.get('http://localhost:3001/tools', (data) => {
+    procName += `<h1>Инструменты</h1>
+    <table class="table toolsTable">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Инструмент</th>
+                <th scope="col">Фотография</th>
+                <th scope="col">Описание</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+    `
+    for (let i = 0; i < data.length; i++) {
+      procName += `<tr>
+      <td>`+ data[i].name + `</td>
+      <td>`+ data[i].image + `</td>
+      <td>`+ data[i].description + `</td>
+      </tr>`;
+  }
+
+  procName += `</tbody></table>`;
+  $("#info").html(procName);
+  })
+}

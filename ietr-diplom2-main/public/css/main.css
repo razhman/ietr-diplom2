@@ -97,3 +97,7 @@ td a{
   font-weight: 600;
   color: black;
 }
+
+.toolsTable img{
+  max-width:150px;
+}
