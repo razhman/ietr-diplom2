@@ -1,21 +1,25 @@
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ИЭТР по Cherry SQR 372</title>
-  <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css"
-  type="text/css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ИЭТР по Cherry SQR 372</title>
+    <link rel="stylesheet" href="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/style.min.css" type="text/css"/>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
 
- <link rel="stylesheet" href="css/main.css">
- <link rel="stylesheet" href="css/navbar.css">  
-</head>
+    <!-- <link rel="stylesheet" href="css/bootstrap-reboot.min.css" /> -->
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
+  </head>
 
-<body>
+  <body>
     <!-- <div class="multi-level">
         <div class="item">
             <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
@@ -41,47 +45,102 @@
         </div>
     </div> -->
 
+    <div id="left">
+      <!-- <div class="panel">
+        <div class="panel-title">
+          <span class="caption">
+            <h5>Дерево</h5>
+          </span>
+          <span class="mif-flow-tree mif-2x icon"> </span>
+        </div> -->
 
-    <div class="panel-title">
-        <span class="caption"><h5>Дерево</h5></span>
-        <span class="mif-flow-tree mif-2x icon">
-            ::before
-        </span>
+        <ul class="tree" id="tree">
+          <li><a href="#" onclick="showEngineDescription()">
+            Главная
+            <span class="icon"><img src="/./img/icons/home.svg" alt=""></span>
+        </a>
+          </li>
+          <li><a href="#" onclick="showDetailsTable()">
+            Состав двигателя
+            <span class="icon"><img src="/./img/icons/structure.svg" alt=""></span>
+        </a>
+          </li>
+          <li><a href="#" onclick="selectionPart()">
+              Информация о детали
+            <span class="icon"><img src="/./img/icons/info.svg" alt=""></span>
+        </a>
+          </li>
+          <li>
+            Обслуживание
+            <span class="node-toggle"></span>
+            <span class="icon"><img src="/./img/icons/folder.svg" alt=""></span>
+            <ul id="maintainance" hidden></ul>
+          </li>
+          <li>
+            Ремонт
+            <span class="node-toggle"></span>
+            <span class="icon"
+              ><img src="/./img/icons/folder.svg" alt=""
+            /></span>
+            <ul id="repair" hidden></ul>
+          </li>
+          <li><a href="#" onclick="showTools()">
+              Инструменты
+            <span class="icon"><img src="/./img/icons/tools.svg" alt=""></span>
+        </a>
+          </li>
+          <li><a href="#" onclick="showCharacteristics()">
+              Технические характеристики
+            <span class="icon"><img src="/./img/icons/tech.svg" alt=""></span>
+            </a>
+          </li>
+          <li><a href="#" onclick="showDiagnostics()">
+              Диагностика неисправностей
+            <span class="icon"><img src="/./img/icons/diagnostics.svg" alt=""></span>
+            </a>
+          </li>
+        </ul>
+      </div>
     </div>
-
-
-
-
-
-
 
     <div id="viewer" onclick="onViewerClick()"></div>
 
     <div id="info">
-        <h3>Информация о двигателе</h3>
-        <p>Данная модель двигателя от известного производителя машиностроения CHERY (КНР). Chery входит в список «10 лучших инновационных предприятий Китая», являясь единственным автопроизводителем, получившим высокий титул не только в Китае, но и во всем мире. Двигатель Chery SQR 372 используется в производстве снегоболотоходов: Пантера, Montero, ХВН 8Х8, Мини джипах: Discovery Classic и Discovery Sport, а так же в различных багги и авто. Также данная модель двигателя  используется в производстве собственных снегоболотоходов и багги. Двигатель удобен в эксплуатации и не требует больших затрат в осуществлении ремонта и замене запасных частей.</p>
-        <img src="img/engine.jpg" alt="Cherry">
+      <h3>Информация о двигателе</h3>
+      <p>
+        Данная модель двигателя от известного производителя машиностроения CHERY
+        (КНР). Chery входит в список «10 лучших инновационных предприятий
+        Китая», являясь единственным автопроизводителем, получившим высокий
+        титул не только в Китае, но и во всем мире. Двигатель Chery SQR 372
+        используется в производстве снегоболотоходов: Пантера, Montero, ХВН 8Х8,
+        Мини джипах: Discovery Classic и Discovery Sport, а так же в различных
+        багги и авто. Также данная модель двигателя используется в производстве
+        собственных снегоболотоходов и багги. Двигатель удобен в эксплуатации и
+        не требует больших затрат в осуществлении ремонта и замене запасных
+        частей.
+      </p>
+      <img src="img/engine2.jpg" alt="Cherry" />
     </div>
 
+    <!-- Lib Scripts -->
 
- <!-- Lib Scripts -->
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"></script>
 
- <script src="https://code.jquery.com/jquery-3.4.1.min.js"
- integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
- integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
- </script>
-  <script src="https://developer.api.autodesk.com/modelderivative/v2/viewers/7.*/viewer3D.min.js"></script>
-
-
-
-   <!-- My Scripts -->
-   <script src="scripts/annotations.js"></script>
-   <script src="scripts/viewer.js"></script>
-   <script src="scripts/database.js"></script>
-   <script src="scripts/main.js"></script>
-   <!-- <script src="scripts/annotations.js"></script> -->
-
-  
-</body>
+    <!-- My Scripts -->
+    <script src="scripts/annotations.js"></script>
+    <script src="scripts/viewer.js"></script>
+    <script src="scripts/database.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- <script src="scripts/annotations.js"></script> -->
+  </body>
 </html>

@@ -5,14 +5,15 @@ body {
   height: 100%;
   display: grid;
   /* grid-template-columns: 19% 50% 31%; */
-  grid-template-columns: 13% 53% 34%;
+  /* grid-template-columns: 13% 53% 34%; */
+  grid-template-columns: 18% 48% 34%;
   grid-template-rows: 100%;
   font-family: 'Open Sans', sans-serif;
   /* background-color: #f5f5dc; */
 }
 
 #info {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 10px;
   padding-right: 10px;
   grid-column-start: 3;

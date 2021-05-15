@@ -103,14 +103,14 @@ async function showProcedures() {
     for (let i = 0; i < data.length; i++) {
       if (data[i].type == 'maintainance')
         mn +=
-          `<li><a href="#" onclick = "showProcDescr(` +
+          `<li><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a href="#" onclick = "showProcDescr(` +
           i +
           `)">` +
           data[i].name +
           `</a></li>`
       else
         repair +=
-          `<li><a href="#" onclick = "showProcDescr(` +
+          `<li><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a href="#" onclick = "showProcDescr(` +
           i +
           `)">` +
           data[i].name +
