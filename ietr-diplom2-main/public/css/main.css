@@ -1,14 +1,12 @@
-@import url(//db.onlinewebfonts.com/c/2ab02c2937018ee7f2ccc346929ccf57?family=Artifakt+Element);
+/* @import url(//db.onlinewebfonts.com/c/2ab02c2937018ee7f2ccc346929ccf57?family=Artifakt+Element); */
 
 body {
   width: 100%;
   height: 100%;
   display: grid;
-  /* grid-template-columns: 19% 50% 31%; */
-  /* grid-template-columns: 13% 53% 34%; */
   grid-template-columns: 18% 48% 34%;
   grid-template-rows: 100%;
-  font-family: 'Open Sans', sans-serif;
+  /* font-family: 'Open Sans', sans-serif; */
   /* background-color: #f5f5dc; */
 }
 
