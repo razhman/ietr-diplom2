@@ -23,81 +23,48 @@
   </head>
 
   <body>
-    <!-- <div class="multi-level">
-        <div class="item">
-            <li><a href="#" onclick="showEngineDescription()">Главная</a></li>
-            <li><a href="#" onclick="showDetailsTable()">Состав двигателя</a></li>
-            <li><a href="#" onclick="selectionPart()">Информация о детали</a></li>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="B"/>
-            <img src="img/Arrow.png" class="arrow"><label for="B">Обслуживание</label>
-            <ul id="maintainance">
-            </ul>
-        </div>
-        <div class="item">
-            <input type="checkbox" id="C"/>
-            <img src="img/Arrow.png" class="arrow"><label for="C">Ремонт</label>
-            <ul id="repair">
-            </ul>
-        </div>
-        <div class="item">
-            <li><a href="#" onclick="showTools()">Инструменты</a></li>
-            <li><a href="#" onclick="showCharacteristics()">Технические характеристики</a></li>
-            <li><a href="#" onclick="showDiagnostics()">Диагностика неисправностей</a></li>
-        </div>
-    </div> -->
-
     <div id="left">
-      <!-- <div class="panel">
-        <div class="panel-title">
-          <span class="caption">
-            <h5>Дерево</h5>
-          </span>
-          <span class="mif-flow-tree mif-2x icon"> </span>
-        </div> -->
-
         <ul class="tree" id="tree">
-          <li class="li-hover"><a href="#" onclick="showEngineDescription()">
+          <li><a href="#" onclick="showEngineDescription()">
             Главная
             <span class="icon"><img src="/./img/icons/home.svg" alt=""></span>
         </a>
           </li>
-          <li class="li-hover"><a href="#" onclick="showDetailsTable()">
+          <li><a href="#" onclick="showDetailsTable()">
             Состав двигателя
             <span class="icon"><img src="/./img/icons/structure.svg" alt=""></span>
         </a>
           </li>
-          <li class="li-hover"><a href="#" onclick="selectionPart()">
+          <li><a href="#" onclick="selectionPart()">
               Информация о детали
             <span class="icon"><img src="/./img/icons/info.svg" alt=""></span>
         </a>
           </li>
           <li>
             Обслуживание
-            <span class="node-toggle"></span>
+            <span class=" arrow node-toggle"></span>
             <span class="icon"><img src="/./img/icons/folder.svg" alt=""></span>
             <ul id="maintainance" hidden></ul>
           </li>
           <li>
             Ремонт
-            <span class="node-toggle"></span>
+            <span class="arrow node-toggle"></span>
             <span class="icon"
               ><img src="/./img/icons/folder.svg" alt=""
             /></span>
             <ul id="repair" hidden></ul>
           </li>
-          <li class="li-hover"><a href="#" onclick="showTools()">
+          <li><a href="#" onclick="showTools()">
               Инструменты
             <span class="icon"><img src="/./img/icons/tools.svg" alt=""></span>
         </a>
           </li>
-          <li class="li-hover"><a href="#" onclick="showCharacteristics()">
+          <li><a href="#" onclick="showCharacteristics()">
               Технические характеристики
             <span class="icon"><img src="/./img/icons/tech.svg" alt=""></span>
             </a>
           </li>
-          <li class="li-hover"><a href="#" onclick="showDiagnostics()">
+          <li><a href="#" onclick="showDiagnostics()">
               Диагностика неисправностей
             <span class="icon"><img src="/./img/icons/diagnostics.svg" alt=""></span>
             </a>

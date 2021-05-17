@@ -21,18 +21,7 @@ tree.onclick = event => {
   if (event.target.tagName != 'SPAN') return
 
   const childrenContainer = event.target.parentNode.querySelector('ul')
-  const span = event.target.parentNode.querySelector('.node-toggle')
-  
-    // console.log('span', span)
-    // if(span == null){
-    //   span.classList.add('node-toggle')
-    // } else {
-    // span.classList.remove('node-toggle')+
-    // span.classList.add('rotation')
-    // }
-    span.classList.remove('node-toggle')
-    span.classList.toggle('rotation')
-  
+  const span = event.target.parentNode.querySelector('.arrow')
 
   if(!childrenContainer) return
 
@@ -42,17 +31,19 @@ tree.onclick = event => {
   if(childrenContainer.hidden){
     event.target.classList.add('hide')
     event.target.classList.remove('show')
+
+    span.classList.remove('rotation')
+    span.classList.add('node-toggle')
   }
   else {
     event.target.classList.add('show')
     event.target.classList.remove('hide')
+    
+    span.classList.remove('node-toggle')
+    span.classList.add('rotation')
   }
  
   }  
-
-  
- 
-
 
   let lastItem
   // Запомнинание и оповещение о выделенном элементе и прошлом
@@ -67,12 +58,18 @@ tree.onclick = event => {
   }
 
 
-  // let headers = document.querySelectorAll('li')
-  // for(let header of headers){
-  //   header.classList.add('li-hover')
-  // }
+  let headers = document.querySelectorAll('li')
+  for(let header of headers){
+    header.classList.add('li-hover')
+  }
   for (const item of document.querySelectorAll('.li-hover')) {
     
     item.onclick = onTreeItemCLick
 
   }
+  console.log(document.querySelectorAll('.li-hover'))
+
+  const repair = document.getElementById('repair')
+  console.log(repair.querySelectorAll('*'))
+  
+  // console.log(document.parentElement.querySelector('.li-hover'))

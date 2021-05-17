@@ -39,7 +39,7 @@ body {
     grid-row-end: 2;
   }
   #info{
-    /* padding: 24px; */
+    padding-left: 2rem;
     position: relative;
     grid-column: 2/4;
     grid-row: 2/4;
@@ -47,6 +47,35 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
+  #left li a, span{
+    font-size: 13px;
+    
+
+  }
+  #left a{
+    padding-right: 1rem;
+  }
+  #left .tree{
+    border: none;
+  }
+  #left .rotation::before{
+    display: block;
+    position: absolute;
+    font-size: 0;
+    content: '';
+    height: 0.3125rem;
+    width: 0.3125rem;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-color: #1d1d1d;
+    top: 3.5%;
+    left: -15.5%;
+    margin-left: -1rem;
+    margin-top: -0.1625rem;
+    transform: rotate(-45deg);
+  }
+
+  
   #info h2{
     font-weight: 900;
     font-size: 18px;
