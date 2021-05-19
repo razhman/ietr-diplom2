@@ -59,17 +59,29 @@ tree.onclick = event => {
 
 
   let headers = document.querySelectorAll('li')
+  let i = 0
   for(let header of headers){
-    header.classList.add('li-hover')
+    if(i == 3 || i == 4){
+      header.classList.add('test')
+      i+=1
+    } else {
+      header.classList.add('li-hover')
+      i+=1
+    }
+      
+    
+    
   }
   for (const item of document.querySelectorAll('.li-hover')) {
+   
     
     item.onclick = onTreeItemCLick
+    console.log(item)
 
   }
+  
   console.log(document.querySelectorAll('.li-hover'))
 
-  const repair = document.getElementById('repair')
-  console.log(repair.querySelectorAll('*'))
+  
   
   // console.log(document.parentElement.querySelector('.li-hover'))
