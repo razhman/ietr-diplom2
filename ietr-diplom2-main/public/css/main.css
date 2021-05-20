@@ -94,7 +94,7 @@ h3{
   font-size: 1.8rem;
 }
 
-p {
+#partDescr p {
   font-weight: 700;
 }
 
@@ -122,10 +122,20 @@ p {
 }
 
 td a{
-  font-weight: 600;
+  font-weight: 700;
   color: black;
+}
+td p{
+  font-weight: 400;
 }
 
 .toolsTable img{
   max-width:150px;
+}
+h5{
+  font-weight: 400;
+}
+#info li{
+  font-weight: 400;
+  list-style-type: circle;
 }

@@ -58,30 +58,34 @@ tree.onclick = event => {
   }
 
 
-  let headers = document.querySelectorAll('li')
-  let i = 0
-  for(let header of headers){
-    if(i == 3 || i == 4){
-      header.classList.add('test')
-      i+=1
-    } else {
-      header.classList.add('li-hover')
-      i+=1
-    }
-      
+  // let headers = document.querySelectorAll('li')
+  // let i = 0
+  // for(let header of headers){
+  //   if(i == 3 || i == 4){
+  //     header.classList.add('test')
+  //     i+=1
+  //   } else {
+  //     header.classList.add('li-hover')
+  //     console.log(header)
+  //     i+=1
+  //   }
     
-    
-  }
-  for (const item of document.querySelectorAll('.li-hover')) {
+  // }
+  
+  // for (const item of document.querySelectorAll('.li-hover')) {
    
     
-    item.onclick = onTreeItemCLick
-    console.log(item)
+  //   item.onclick = onTreeItemCLick
+  //   // console.log(item)
 
-  }
+  // }
   
-  console.log(document.querySelectorAll('.li-hover'))
+ ///console.log(document.querySelectorAll('.li-hover'))
 
   
   
   // console.log(document.parentElement.querySelector('.li-hover'))
+
+  for (const item of document.getElementsByTagName('span')) {
+    item.onclick = onTreeItemCLick
+  }
