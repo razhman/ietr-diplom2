@@ -130,11 +130,6 @@ let authorizationForm = document.querySelector('#authorizationForm')
 authorizationForm.onsubmit = (event) => {
   event.preventDefault()
   login($('#autLogin').val(), $('#autPassword').val())
-  // document.querySelector('.modal-open').classList.remove('modal-open')
-  // 
-
-    
- 
 }
 
 let registrationForm = document.querySelector('#registrationForm')
@@ -152,13 +147,8 @@ registrationForm.onsubmit = (event) => {
 //   let user = await getCurrentUser()
 //   if (user.username != undefined) {
 //     $('#authorizationLink').html = user.username
-//     $("#logout").append(`<button id="logoutbutton" type="button" onclick="logout()" class="cancelbtn btn btn-secondary">Выйти</button>`)
+//     // $("#logout").append(`<button id="logoutbutton" type="button" onclick="logout()" class="cancelbtn btn btn-secondary">Выйти</button>`)
 //   }
 //   user = undefined
 // }
 
-//  document.getElementsByTagName('body').classList.remove('modal-open')
-
-// $(document).ready(function () {
-//   openLoginModal()
-// })

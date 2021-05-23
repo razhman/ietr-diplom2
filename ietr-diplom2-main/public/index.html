@@ -26,12 +26,13 @@
   <body>
     <div id="left">
       
+      <div class="entrance">
       <a id="authorizationLink" class="btn btn-default" style="font-size: 1.5rem;" data-toggle="modal" data-target="#loginModal" href="javascript:void(0)">Войти
         <span class="icon"><img src="/./img/icons/login.svg" style="width: 30px; height: 30px;" alt=""></span>
       </a>
       <img class="print-doc" style="margin-top: 10px;margin-right: 10px; cursor:pointer; float: right;" onclick="CallPrint('info')"
       src="../img/print.png" alt="Print">
-
+    </div>
         <ul class="tree" id="tree">
           <li><a href="javascript:void(0)" onclick="showEngineDescription()">
             Главная
@@ -146,6 +147,7 @@
 
  <div class="modal-footer">
  <div class="forgot login-footer">
+  <a class="autExit" href="javascript:void(0)" style="float: left;display:none" onclick="logout()">Выход</a>
  <a href="javascript: showRegisterForm();">Нет аккаунта?</a>
  </div>
  <!-- <div id="logout">

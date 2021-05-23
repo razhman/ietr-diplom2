@@ -110,6 +110,10 @@ db.all('SELECT * FROM tools', [], (err, rows) => {
   })
 })
 
+app.get('/comments', function (req, res) {
+  processData(res, 'SELECT * FROM comments')
+})
+
 app.use(
   clientSessions({
     secret: '5hR3k1sL0v35hR3k1sL1f3',
@@ -195,3 +199,37 @@ app.get('/logout', function (req, res) {
   req.session_state.reset()
   res.send()
 })
+
+app.post('/addComment', function (req, res) {
+  db.serialize(function () {
+    db.run(
+      'INSERT INTO comments (name, text, proc_id, date) VALUES (?, ?, ?, ?)',
+      [req.body.name, req.body.text, req.body.proc_id, req.body.date],
+      (err) => {
+        if (err) {
+          return console.log(err.message)
+        }
+        console.log(
+          `Row was added to the table "comments": ` + JSON.stringify(req.body)
+        )
+        res.send()
+      }
+    )
+  })
+})
+
+function processData(res, sql) {
+  db.serialize(function () {
+    db.all(sql, function (err, rows) {
+      if (err) {
+        console.error(err)
+        res.status(500).send(err)
+      } else sendData(res, rows, err)
+    })
+  })
+}
+
+function sendData(res, data, err) {
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.send(data)
+}
