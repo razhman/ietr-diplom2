@@ -1,5 +1,3 @@
-
-
 async function showEngineDescription() {
   $.get('http://localhost:3001/parts2', (data) => {
     $('#info').html(data[0].description)
@@ -103,14 +101,14 @@ async function showProcedures() {
     for (let i = 0; i < data.length; i++) {
       if (data[i].type == 'maintainance')
         mn +=
-          `<li><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a class="li-hover" href="#" onclick = "showProcDescr(` +
+          `<li><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a class="li-hover" href="javascript:void(0)" onclick = "showProcDescr(` +
           i +
           `)">` +
           data[i].name +
           `</a></li>`
       else
         repair +=
-          `<li class="li-hover"><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a href="#" onclick = "showProcDescr(` +
+          `<li class="li-hover"><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a href="javascript:void(0)" onclick = "showProcDescr(` +
           i +
           `)">` +
           data[i].name +
@@ -136,14 +134,92 @@ async function showTools() {
             <tbody></tbody>
     `
     for (let i = 0; i < data.length; i++) {
-      procName += `<tr>
-      <td>`+ data[i].name + `</td>
-      <td>`+ data[i].image + `</td>
-      <td>`+ data[i].description + `</td>
-      </tr>`;
-  }
+      procName +=
+        `<tr>
+      <td>` +
+        data[i].name +
+        `</td>
+      <td>` +
+        data[i].image +
+        `</td>
+      <td>` +
+        data[i].description +
+        `</td>
+      </tr>`
+    }
 
-  procName += `</tbody></table>`;
-  $("#info").html(procName);
+    procName += `</tbody></table>`
+    $('#info').html(procName)
   })
 }
+
+async function login(username, password) {
+  let data = { username: username, password: password }
+  $.post({
+    traditional: true,
+    url: '/login',
+    contentType: 'application/json',
+    data: JSON.stringify(data),
+    dataType: 'html',
+    success: function (response) {
+      $('#authorizationLink').html(response)
+      showEngineDescription()
+      autLogin = document.querySelector('#autLogin')
+      autPassword = document.querySelector('#autPassword')
+      autLogin.value = ''
+      autPassword.value = ''
+      $('#loginModal').modal('hide')
+      
+
+      $('#logout').append(
+        `<button id="logoutbutton" type="button" onclick="logout()" class="cancelbtn btn btn-secondary">Выйти</button>`
+      )
+    },
+    error: function (error) {
+      alert('Неправильный логин или пароль')
+    },
+  })
+}
+async function register(username, password, repeatPassword) {
+  let data = {
+    username: username,
+    password: password,
+    repeatpassword: repeatPassword,
+  }
+  $.post({
+    traditional: true,
+    url: '/register',
+    contentType: 'application/json',
+    data: JSON.stringify(data),
+    dataType: 'html',
+    success: function (response) {
+      alert('Вы успешно зарегистрировались!')
+      regLogin = document.querySelector('#regLogin')
+      regPassword = document.querySelector('#regPassword')
+      regPasswordConfirmation = document.querySelector(
+        '#regPasswordConfirmation'
+      )
+
+      regLogin.value = ''
+      regPassword.value = ''
+      regPasswordConfirmation.value = ''
+    },
+    error: function (error) {
+      alert('Проверьте правильность пароля')
+    },
+  })
+}
+
+// async function getCurrentUser() {
+//   let result
+//   $.ajax({
+//     url: 'http://localhost:3001/currentuser',
+//     type: 'get',
+//     dataType: 'json',
+//     async: false,
+//     success: function (data) {
+//       result = data
+//     },
+//   })
+//   return { username: result.username, isadmin: result.isadmin }
+// }

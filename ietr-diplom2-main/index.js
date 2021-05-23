@@ -1,6 +1,8 @@
 const express = require('express')
 const Axios = require('axios')
 const bodyParser = require('body-parser')
+const bcrypt = require('bcryptjs')
+const clientSessions = require('client-sessions')
 const FORGE_CLIENT_ID = 'XgCmlo17bpTMdddGvWhuG9bH9Vb2BCzp'
 const FORGE_CLIENT_SECRET = '9Q9QpzcSClCJndQO'
 
@@ -61,7 +63,7 @@ app.listen(port, () => {
 const sqlite3 = require('sqlite3').verbose()
 var parts = ''
 //open the database
-let db = new sqlite3.Database('database.db', sqlite3.OPEN_READONLY, (err) => {
+let db = new sqlite3.Database('database.db', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     console.log(err.message)
   } else console.log('Connected to the database.')
@@ -99,7 +101,6 @@ db.all('SELECT * FROM characteristics', [], (err, rows) => {
   })
 })
 
-
 db.all('SELECT * FROM tools', [], (err, rows) => {
   if (err) {
     console.error(err.message)
@@ -107,4 +108,90 @@ db.all('SELECT * FROM tools', [], (err, rows) => {
   app.get('/tools', (req, res) => {
     res.send(rows)
   })
+})
+
+app.use(
+  clientSessions({
+    secret: '5hR3k1sL0v35hR3k1sL1f3',
+    duration: 60 * 60 * 1000,
+  })
+)
+app.post('/register', function (req, res) {
+  if (req.body.password === req.body.repeatpassword) {
+    db.serialize(function () {
+      db.all(
+        `SELECT * FROM users WHERE username = ?`,
+        [req.body.username],
+        (err, rows) => {
+          if (rows.length == 0) {
+            db.run(
+              'INSERT INTO users (username, password) VALUES (?, ?)',
+              [
+                req.body.username,
+                bcrypt.hashSync(
+                  req.body.password,
+                  bcrypt.genSaltSync(10),
+                  null
+                ),
+              ],
+              (err) => {
+                if (err) {
+                  return console.log(err.message)
+                }
+                console.log(
+                  `Пользователь добавлен: ` + JSON.stringify(req.body.username)
+                )
+                res.sendStatus(200)
+              }
+            )
+          } else {
+            alert('Такой пользователь уже есть')
+            res.sendStatus(404)
+          }
+        }
+      )
+    })
+  } else {
+    alert('Не совпадает пароль и подтверждение пароля')
+    res.sendStatus(400)
+  }
+})
+
+app.post(`/login`, function (req, res) {
+  db.serialize(function () {
+    db.all(
+      `SELECT * FROM users WHERE username = ?`,
+      [req.body.username],
+      (err, rows) => {
+        if (rows.length == 1) {
+          if (isValidPassword(rows[0], req.body.password)) {
+            req.session_state.username = req.body.username
+            req.session_state.admin = rows[0].admin
+            res.send(req.body.username)
+          } else {
+            console.error('Неправильный пароль')
+            res.sendStatus(400)
+          }
+        } else {
+          console.error('Неправильный логин')
+          res.sendStatus(404)
+        }
+      }
+    )
+  })
+})
+
+let isValidPassword = function (user, password) {
+  return bcrypt.compareSync(password, user.password)
+}
+app.get('/currentuser', function (req, res) {
+  res.send({
+    username: req.session_state.username,
+    isadmin: req.session_state.admin,
+  })
+})
+
+app.get('/logout', function (req, res) {
+  req.session_state.reset()
+  res.send()
 })
