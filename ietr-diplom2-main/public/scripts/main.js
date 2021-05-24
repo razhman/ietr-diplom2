@@ -1,3 +1,5 @@
+
+checkUser()
 showProcedures()
 
 function startAnimation(id) {
@@ -142,13 +144,14 @@ registrationForm.onsubmit = (event) => {
   )
 }
 
-// checkUser()
-// async function checkUser() {
-//   let user = await getCurrentUser()
-//   if (user.username != undefined) {
-//     $('#authorizationLink').html = user.username
-//     // $("#logout").append(`<button id="logoutbutton" type="button" onclick="logout()" class="cancelbtn btn btn-secondary">Выйти</button>`)
-//   }
-//   user = undefined
-// }
-
+checkUser();
+async function checkUser() {
+    let user = await getCurrentUser();
+    if (user.username != undefined) {
+        $("#authorizationLink").html(user.username);
+        document.querySelector('.autExit').style.display = 'block'
+        
+    }
+    user = undefined;
+    
+}

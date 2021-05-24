@@ -164,7 +164,7 @@ async function login(username, password) {
     dataType: 'html',
     success: function (response) {
       $('#authorizationLink').html(response)
-      showEngineDescription()
+      // showEngineDescription()
       autLogin = document.querySelector('#autLogin')
       autPassword = document.querySelector('#autPassword')
       autLogin.value = ''

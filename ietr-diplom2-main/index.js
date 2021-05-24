@@ -116,7 +116,7 @@ app.get('/comments', function (req, res) {
 
 app.use(
   clientSessions({
-    secret: '5hR3k1sL0v35hR3k1sL1f3',
+    secret: '9x04ycd4t6du6l0m',
     duration: 60 * 60 * 1000,
   })
 )
