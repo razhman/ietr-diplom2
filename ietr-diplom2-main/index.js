@@ -188,10 +188,10 @@ app.post(`/login`, function (req, res) {
 let isValidPassword = function (user, password) {
   return bcrypt.compareSync(password, user.password)
 }
-app.get('/currentuser', function (req, res) {
+app.get('/currentUser', function (req, res) {
   res.send({
     username: req.session_state.username,
-    isadmin: req.session_state.admin,
+    isAdmin: req.session_state.admin,
   })
 })
 
@@ -233,3 +233,32 @@ function sendData(res, data, err) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.send(data)
 }
+
+app.post('/deleteComment', function (req, res) {
+  let comments = []
+  db.serialize(function () {
+    db.all(
+      'SELECT * FROM comments WHERE proc_id = ?',
+      [req.body.proc_id],
+      (err, rows) => {
+        if (err) {
+          console.error(err.message)
+        }
+        comments = rows
+        db.all(
+          `DELETE FROM comments WHERE id = ?`,
+          [comments[req.body.id].id],
+          (err, rows) => {
+            if (err) {
+              return console.log(err.message)
+            }
+            console.log(
+              'Removed comment: ' + JSON.stringify(comments[req.body.id])
+            )
+            res.send()
+          }
+        )
+      }
+    )
+  })
+})

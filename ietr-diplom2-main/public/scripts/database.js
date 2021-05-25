@@ -62,7 +62,12 @@ function sortDetails(data) {
 
 async function showProcDescr(id) {
   $.get('http://localhost:3001/procedures', (data) => {
-    $('#info').html(data[id].descr)
+    // $('#info').html(data[id].descr)
+    let descr = `<h1>` + data[id].descr + `</h1>`
+    // description += `<div id="tools"></div>`;
+    // description += data[id].description;
+    descr += `<div id="comments"></div>`
+    $('#info').html(descr)
     showComments(id)
   })
 }
@@ -164,7 +169,7 @@ async function login(username, password) {
     dataType: 'html',
     success: function (response) {
       $('#authorizationLink').html(response)
-      // showEngineDescription()
+      showEngineDescription()
       autLogin = document.querySelector('#autLogin')
       autPassword = document.querySelector('#autPassword')
       autLogin.value = ''
@@ -172,9 +177,6 @@ async function login(username, password) {
       $('#loginModal').modal('hide')
 
       document.querySelector('.autExit').style.display = 'block'
-      // $('#logout').append(
-      //   `<button id="logoutbutton" type="button" onclick="logout()" class="cancelbtn btn btn-secondary">Выйти</button>`
-      // )
     },
     error: function (error) {
       alert('Неправильный логин или пароль')
@@ -214,7 +216,7 @@ async function register(username, password, repeatPassword) {
 async function getCurrentUser() {
   let result
   $.ajax({
-    url: 'http://localhost:3001/currentuser',
+    url: 'http://localhost:3001/currentUser',
     type: 'get',
     dataType: 'json',
     async: false,
@@ -222,7 +224,7 @@ async function getCurrentUser() {
       result = data
     },
   })
-  return { username: result.username, isadmin: result.isadmin }
+  return { username: result.username, isAdmin: result.isAdmin }
 }
 
 async function logout() {
@@ -249,40 +251,53 @@ async function addComment(name, text, proc_id, date) {
     },
   })
 }
+async function deleteComment(id, proc_id) {
+  $.post({
+    traditional: true,
+    url: '/deleteComment',
+    contentType: 'application/json',
+    data: JSON.stringify({ id: id, proc_id: proc_id }),
+    dataType: 'html',
+    success: function (response) {
+      showComments(proc_id - 1)
+    },
+  })
+}
 async function showComments(id) {
   $.get('http://localhost:3001/comments', async function (data) {
-    let curdata = data.filter((element) => element.proc_id - 1 == id)
-    let current_user = await getCurrentUser()
+    let allComments = data.filter((element) => element.proc_id - 1 == id)
+    let currentUser = await getCurrentUser()
 
     let comments = `<div class="comments">
       <h3 class="title-comments">Комментарии</h3>`
-    if (curdata.length != 0) {
+    $('#comments').html(comments)
+    if (allComments.length != 0) {
       comments = `<div class="comments">
           <h3 class="title-comments">Комментарии</h3>
           <ul class="media-list">`
-      for (let i = 0; i < curdata.length; i++) {
+      for (let i = 0; i < allComments.length; i++) {
         comments +=
           `<li class="media">
               <div class="media-body">
                 <div class="media-heading">
                   <div class="author">` +
-          curdata[i].name +
+          allComments[i].name +
           `</div>
                   <div class="metadata">
                     <span class="date">` +
-          curdata[i].date +
+          allComments[i].date +
           `</span>
                   </div>
                 </div>
                 <div class="media-text text-justify">` +
-          curdata[i].text +
+          allComments[i].text +
           `</div>
                 <div class="footer-comment">
                   <a class="btn btn-default" href="javascript:void(0)" onclick="reply('` +
-          curdata[i].name +
+          allComments[i].name +
           `')">Ответить</a>
                 </div>`
-        if (current_user.isadmin == 1)
+        if (currentUser.isAdmin == 1)
           comments +=
             `<a class="btn btn-default" href="javascript:void(0)" onclick="deleteComment(` +
             i +
@@ -295,23 +310,23 @@ async function showComments(id) {
       comments += `</ul></div>`
     } else comments += `</div>`
 
-    if (current_user.username != undefined) {
-      comments += `<form id="commentform">
+    if (currentUser.username != undefined) {
+      comments += `<form id="commentForm">
           <label for="name">Ваше имя:</label><br>
-          <input disabled type="text" id="inputname" required><br>
+          <input disabled type="text" id="inputName" required><br>
           <label for="text">Сообщение:</label><br>
-          <textarea cols="50" id="inputtext" required></textarea><br>
+          <textarea cols="50" id="inputText" required></textarea><br>
           <p></p>
           <input type="submit" value="Оставить комментарий" id="commentsubmit">
           </form>`
       $('#comments').html(comments)
-      $('#inputname').val(current_user.username)
-      let commentform = document.querySelector('#commentform')
-      commentform.onsubmit = function (event) {
+      $('#inputName').val(currentUser.username)
+      let commentForm = document.querySelector('#commentForm')
+      commentForm.onsubmit = function (event) {
         event.preventDefault()
         addComment(
-          current_user.username,
-          $('#inputtext').val(),
+          currentUser.username,
+          $('#inputText').val(),
           id + 1,
           new Date().toLocaleString('ru-RU')
         ).then(() => showComments(id))
@@ -322,5 +337,5 @@ async function showComments(id) {
   })
 }
 function reply(name) {
-  $('#inputtext').val('<b>' + name + ',</b> ')
+  $('#inputText').val('<b>' + name + ',</b> ')
 }

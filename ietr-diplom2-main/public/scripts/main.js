@@ -1,5 +1,4 @@
-
-checkUser()
+showEngineDescription()
 showProcedures()
 
 function startAnimation(id) {
@@ -54,31 +53,6 @@ function onTreeItemCLick() {
   lastItem = this
   // onItemSelected(this)
 }
-
-// let headers = document.querySelectorAll('li')
-// let i = 0
-// for(let header of headers){
-//   if(i == 3 || i == 4){
-//     header.classList.add('test')
-//     i+=1
-//   } else {
-//     header.classList.add('li-hover')
-//     console.log(header)
-//     i+=1
-//   }
-
-// }
-
-// for (const item of document.querySelectorAll('.li-hover')) {
-
-//   item.onclick = onTreeItemCLick
-//   // console.log(item)
-
-// }
-
-///console.log(document.querySelectorAll('.li-hover'))
-
-// console.log(document.parentElement.querySelector('.li-hover'))
 
 for (const item of document.getElementsByTagName('span')) {
   item.onclick = onTreeItemCLick
@@ -144,14 +118,12 @@ registrationForm.onsubmit = (event) => {
   )
 }
 
-checkUser();
+checkUser()
 async function checkUser() {
-    let user = await getCurrentUser();
-    if (user.username != undefined) {
-        $("#authorizationLink").html(user.username);
-        document.querySelector('.autExit').style.display = 'block'
-        
-    }
-    user = undefined;
-    
+  let user = await getCurrentUser()
+  if (user.username != undefined) {
+    $('#authorizationLink').html(user.username)
+    document.querySelector('.autExit').style.display = 'block'
+  }
+  user = undefined
 }
