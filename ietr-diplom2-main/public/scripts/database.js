@@ -273,7 +273,7 @@ async function showComments(id) {
     $('#comments').html(comments)
     if (allComments.length != 0) {
       comments = `<div class="comments">
-          <h3 class="title-comments">Комментарии</h3>
+          <h4 class="title-comments">Комментарии(${allComments.length})</h4>
           <ul class="media-list">`
       for (let i = 0; i < allComments.length; i++) {
         comments +=
@@ -293,13 +293,13 @@ async function showComments(id) {
           allComments[i].text +
           `</div>
                 <div class="footer-comment">
-                  <a class="btn btn-default" href="javascript:void(0)" onclick="reply('` +
+                  <a class="btn btn-dark" href="javascript:void(0)" onclick="reply('` +
           allComments[i].name +
           `')">Ответить</a>
                 </div>`
         if (currentUser.isAdmin == 1)
           comments +=
-            `<a class="btn btn-default" href="javascript:void(0)" onclick="deleteComment(` +
+            `<a class="btn btn-danger" style="width:92px; margin-top: 5px" href="javascript:void(0)" onclick="deleteComment(` +
             i +
             `, ` +
             (id + 1) +
@@ -315,14 +315,14 @@ async function showComments(id) {
           <label for="name">Ваше имя:</label><br>
           <input disabled type="text" id="inputName" required><br>
           <label for="text">Сообщение:</label><br>
-          <textarea cols="50" id="inputText" required></textarea><br>
+          <textarea cols="70" id="inputText" required></textarea><br>
           <p></p>
-          <input type="submit" value="Оставить комментарий" id="commentsubmit">
+          <button type="submit" class="btn btn-info" id="commentsubmit">Оставить комментарий</button>
           </form>`
       $('#comments').html(comments)
       $('#inputName').val(currentUser.username)
       let commentForm = document.querySelector('#commentForm')
-      commentForm.onsubmit = function (event) {
+      commentForm.onsubmit = (event) => {
         event.preventDefault()
         addComment(
           currentUser.username,
@@ -338,4 +338,28 @@ async function showComments(id) {
 }
 function reply(name) {
   $('#inputText').val('<b>' + name + ',</b> ')
+}
+
+async function showDocumentuments() {
+  $.get('http://localhost:3001/documents', function (data) {
+    let info = `<h2>Документы ИЭТР</h2><ul>`
+    for (let i = 0; i < data.length; i++) {
+      info +=
+        `<li><a href="javascript:void(0)" onclick="showDocument('` +
+        data[i].file +
+        `')">` +
+        data[i].name +
+        `</a></li`
+    }
+    info += `</ul>`
+    $('#info').html(info)
+  })
+}
+
+function showDocument(doc) {
+  $('#viewer').html(
+    `<iframe src="` + doc + `" width="100%" height="100%"></iframe>`
+  )
+  console.log(doc)
+  isModelLoaded = false
 }

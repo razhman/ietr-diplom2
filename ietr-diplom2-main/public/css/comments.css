@@ -1,16 +1,18 @@
 .media-body .author {
-  display: block;
-  font-size: 1rem;
+  display: inline-block;
+  font-size: 1.2rem;
   color: #000;
   font-weight: 700;
 }
 .media-body .metadata {
-  display: block;
+  display: inline-block;
   color: #777;
-  font-size: .8125rem;
+  font-size: .9125rem;
 }
 .media-text {
   margin-bottom: 0.25rem;
+  max-width: 550px;
+  word-wrap: break-word;
 }
 .title-comments {
   font-size: 1.4rem;

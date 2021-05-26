@@ -262,3 +262,12 @@ app.post('/deleteComment', function (req, res) {
     )
   })
 })
+
+db.all('SELECT * FROM documents', [], (err, rows) => {
+  if (err) {
+    console.error(err.message)
+  }
+  app.get('/documents', function (req, res) {
+    res.send(rows)
+  })
+})
