@@ -340,8 +340,8 @@ function reply(name) {
   $('#inputText').val('<b>' + name + ',</b> ')
 }
 
-async function showDocumentuments() {
-  $.get('http://localhost:3001/documents', function (data) {
+async function showDocuments() {
+  $.get('http://localhost:3001/documents',  data => {
     let info = `<h2>Документы ИЭТР</h2><ul>`
     for (let i = 0; i < data.length; i++) {
       info +=
