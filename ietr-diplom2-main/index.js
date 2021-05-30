@@ -3,8 +3,8 @@ const Axios = require('axios')
 const bodyParser = require('body-parser')
 const bcrypt = require('bcryptjs')
 const clientSessions = require('client-sessions')
-const FORGE_CLIENT_ID = 'XgCmlo17bpTMdddGvWhuG9bH9Vb2BCzp'
-const FORGE_CLIENT_SECRET = '9Q9QpzcSClCJndQO'
+const FORGE_CLIENT_ID = '0nH6aazOSQcQiAHiHrycK57ObAu9Chd5'
+const FORGE_CLIENT_SECRET = 'Whb7n7j58eqkxqPP'
 
 const app = express()
 app.use(bodyParser.json())

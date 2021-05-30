@@ -1,12 +1,14 @@
 async function showEngineDescription() {
   $.get('http://localhost:3001/parts2', (data) => {
     $('#info').html(data[0].description)
+    if (!isModelLoaded) loadModel()
+
   })
 }
 
 async function showPartDescription(id) {
   $.get('http://localhost:3001/parts2', (data) => {
-    for (let i = 0; i < data.length; i++) {
+    for (let i in data) {
       let nodeid = JSON.parse(data[i].node_ids)
       if (nodeid.indexOf(id) != -1) {
         viewer.select(nodeid)
@@ -47,6 +49,7 @@ async function showDetailsTable() {
     detailsTable += '</tbody></table>'
 
     $('#info').html(detailsTable)
+    if (!isModelLoaded) loadModel()
   })
   if (isAnimationStarted) stopAnimation()
 }
@@ -69,13 +72,14 @@ async function showProcDescr(id) {
     descr += `<div id="comments"></div>`
     $('#info').html(descr)
     showComments(id)
+    if (!isModelLoaded) loadModel()
   })
 }
 
 function selectionPart() {
   document.getElementById(
     'info'
-  ).innerHTML = `<h3><b>Информация о детали:</b></h3>
+  ).innerHTML = `<h1>Информация о детали:</h1>
     <div id="partDescr">
         <p>Выберите деталь</p>      
     </div>`
@@ -85,18 +89,21 @@ function selectionPart() {
 async function showAnnotations(id) {
   $.get('http://localhost:3001/procedures', (data) => {
     annotations = JSON.parse(data[id].annotations)
+    console.log('annot: ', annotations)
   })
 }
 
 async function showCharacteristics() {
   $.get('http://localhost:3001/characteristics', (data) => {
     $('#info').html(data[0].description)
+    if (!isModelLoaded) loadModel()
   })
 }
 
 async function showDiagnostics() {
   $.get('http://localhost:3001/characteristics', (data) => {
     $('#info').html(data[1].description)
+    if (!isModelLoaded) loadModel()
   })
 }
 
@@ -104,7 +111,7 @@ async function showProcedures() {
   $.get('http://localhost:3001/procedures', (data) => {
     let mn = ``
     let repair = ``
-    for (let i = 0; i < data.length; i++) {
+    for (let i in data) {
       if (data[i].type == 'maintainance')
         mn +=
           `<li><span class="icon"><img src="/./img/icons/list.svg" alt=""></span><a class="li-hover" href="javascript:void(0)" onclick = "showProcDescr(` +
@@ -121,6 +128,7 @@ async function showProcedures() {
           `</a></li>`
       $('#maintainance').html(mn)
       $('#repair').html(repair)
+      if (!isModelLoaded) loadModel()
     }
   })
 }
@@ -139,7 +147,7 @@ async function showTools() {
             </thead>
             <tbody></tbody>
     `
-    for (let i = 0; i < data.length; i++) {
+    for (let i in data) {
       procName +=
         `<tr>
       <td>` +
@@ -156,6 +164,7 @@ async function showTools() {
 
     procName += `</tbody></table>`
     $('#info').html(procName)
+    if (!isModelLoaded) loadModel()
   })
 }
 
@@ -269,7 +278,7 @@ async function showComments(id) {
     let currentUser = await getCurrentUser()
 
     let comments = `<div class="comments">
-      <h3 class="title-comments">Комментарии</h3>`
+      <h1 class="title-comments">Комментарии(${allComments.length})</h1>`
     $('#comments').html(comments)
     if (allComments.length != 0) {
       comments = `<div class="comments">
@@ -341,15 +350,15 @@ function reply(name) {
 }
 
 async function showDocuments() {
-  $.get('http://localhost:3001/documents',  data => {
-    let info = `<h2>Документы ИЭТР</h2><ul>`
-    for (let i = 0; i < data.length; i++) {
+  $.get('http://localhost:3001/documents', (data) => {
+    let info = `<h1>Техническая документация</h1><ul>`
+    for (let i in data) {
       info +=
         `<li><a href="javascript:void(0)" onclick="showDocument('` +
         data[i].file +
         `')">` +
         data[i].name +
-        `</a></li`
+        `</a></li><br>`
     }
     info += `</ul>`
     $('#info').html(info)
@@ -358,8 +367,9 @@ async function showDocuments() {
 
 function showDocument(doc) {
   $('#viewer').html(
-    `<iframe src="` + doc + `" width="100%" height="100%"></iframe>`
+    `<iframe class="iframe" src="` +
+      doc +
+      `" width="100%" height="100%"></iframe>`
   )
-  console.log(doc)
   isModelLoaded = false
 }

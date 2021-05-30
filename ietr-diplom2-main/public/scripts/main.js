@@ -61,16 +61,20 @@ for (const item of document.getElementsByTagName('span')) {
 function CallPrint(strid) {
   var prtContent = document.getElementById(strid)
   var prtCSS = `<style>
-    p {
-        font-weight: bold;
-    }
-    .btn-success{
-      width: 180px;
-      height: 40px;
+  *{
+    font-size: 25px;
+  }
+  h1{
+    font-size: 30px;
+  }
+   
+    .btn-dark{
+      width: 250px;
+      height: 50px;
     }
     body {
       width: 100%;
-      height: 100%;
+      height: 0%;
       display: grid;
       grid-template-columns: 100%;
       grid-template-rows: 8%;
@@ -80,7 +84,7 @@ function CallPrint(strid) {
       max-width:100px;
   }
     </style>`
-  // var WinPrint = window.open('', '', 'left=50,top=50,width=800,height=640,toolbar=0,scrollbars=1,status=0');
+
   let WinPrint = window.open(
     '',
     '',
@@ -88,10 +92,13 @@ function CallPrint(strid) {
   )
   WinPrint.document.write('<head>')
   WinPrint.document.write(prtCSS)
-  WinPrint.document.write('</head>')
+  WinPrint.document.write('</head><br>')
   WinPrint.document.write('<body>')
   WinPrint.document.write(prtContent.innerHTML)
   WinPrint.document.write('</body>')
+  // WinPrint.document.write('<div id="info" class="contentpane">')
+  // WinPrint.document.write(prtCSS)
+  // WinPrint.document.write(prtContent.innerHTML)
   WinPrint.document.close()
   WinPrint.focus()
   WinPrint.onload = () => {

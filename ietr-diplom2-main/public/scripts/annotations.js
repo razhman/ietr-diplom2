@@ -36,6 +36,7 @@ function showAnnotation(id) {
     annotation.appendChild(annotationText)
     setAnnotationPosition(id)
   }
+  
 }
 function annotationUpdate() {
   for (const id in annotations) {
@@ -112,4 +113,3 @@ function deleteAllAnnotations() {
       document.querySelector("#annotation-" + id).remove();
   }
 }
-
