@@ -39,17 +39,38 @@ body {
     grid-column: 2/4;
     grid-row: 2/4;
     overflow: scroll;
-    overflow-x: hidden;
     scroll-behavior: smooth;
+  }
+  #info td, tr{
+    font-size: 13px;
+  }
+  #info h2{
+    font-weight: 900;
+    font-size: 1.2rem;
+  }
+  #info h1{
+    font-size: 1.9rem;
+  }
+  #info p{
+    font-size: 14px;
+  }
+  #info img{
+    width: 50%;
+  }
+
+  #left{
+    position: relative;
+    left: -20px;
+  }
+  #left #authorizationLink{
+    margin-left: 20px;
   }
   #left li a, span{
     font-size: 13px;
     
 
   }
-  #left a{
-    padding-right: 1rem;
-  }
+ 
   #left .tree{
     border: none;
   }
@@ -70,18 +91,19 @@ body {
     transform: rotate(-45deg);
   }
 
-  
-  #info h2{
-    font-weight: 900;
-    font-size: 18px;
+  .icon img{
+    display: none;
   }
-  #info p{
-    font-size: 14px;
+  .tree li .node-toggle{
+    position: absolute;
+    left: 0;
   }
-  #info img{
-    width: 50%;
+  #authorizationLink{
+    font-size: 1.4rem;
   }
-  
+  .print-doc{
+    display: none;
+  }
 }
 
 h3{
@@ -101,9 +123,9 @@ h3{
   display: block;
   margin: 0 auto;
 }
-#info h2{
+/* #info h2{
   font-size: 1.5rem;
-}
+} */
 
 .annotation {
   position: absolute;
