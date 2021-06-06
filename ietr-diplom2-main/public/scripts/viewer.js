@@ -4,8 +4,9 @@ let viewer,
   isAnimationStarted = false,
   isModelLoaded = true,
   FORGE_MODEL_URN =
-    /*'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA0LTEyLTE0LTMxLTE3LWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2MTIuZjNk'*/
-    'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA1LTMwLTEyLTI3LTAxLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2NjQuZjNk'
+    
+    // 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA1LTMwLTEyLTI3LTAxLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2NjQuZjNk'
+    'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA2LTA2LTA5LTU3LTQzLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZX1NRUjM3Ml9FbmdpbmVfSm9obl9EZWVyZV9HYXRvcl84MjVpX3Y2OCUyMHYyNC5mM2Q'
 const options = {
   env: 'AutodeskProduction',
   api: 'derivativeV2', // for models uploaded to EMEA change this option to 'derivativeV2_EU'
@@ -31,9 +32,21 @@ function loadModel() {
   const config = {
     extensions: ['Autodesk.Fusion360.Animation', 'Autodesk.NPR'],
     externals: { EventsEmitter: 'EventsEmmitter' },
+    disabledExtensions: {
+      measure:false,
+      viewcube:false,
+      layermanage:false,
+      explode:false,
+      section:false,
+      hyperlink:true,
+      bimwalk:true,
+      fusionOrbit:true,
+      //...
+      }
   }
 
   viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv, config)
+  viewer.setProgressiveRendering(false)
   const startedCode = viewer.start()
   if (startedCode > 0) {
     console.error('Failed to create a Viewer: WebGL not supported.')
