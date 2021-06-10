@@ -86,15 +86,17 @@ function hideAnnotation(id) {
 // }
 
 let interval = setInterval(animTimer, 100);
+
+
 function animTimer() {
   if (isAnimationStarted) {
       let animExt = viewer.getExtension("Autodesk.Fusion360.Animation");
 
-      let progress = Math.floor(animExt.getCurrentTime() / animExt.getDuration() * 100); 
+      let progress = Math.floor(animExt.getCurrentTime() / animExt.getDuration() * 100); //прогресс в процентах
 
       annotations.forEach(element => {
-          let start = annotations[annotations.indexOf(element)].start; 
-          let end = annotations[annotations.indexOf(element)].end; 
+          let start = annotations[annotations.indexOf(element)].start; //начало анимации в процентах
+          let end = annotations[annotations.indexOf(element)].end; //конец анимации в процентах
           if ((progress >= start) && (progress < end)) {
               showAnnotation(annotations.indexOf(element));
               viewer.select(element.nodeid);
@@ -107,6 +109,7 @@ function animTimer() {
       }
   }
 }
+
 function deleteAllAnnotations() {
   for (const id in annotations) {
       delete annotations[id];
