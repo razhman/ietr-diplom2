@@ -2,7 +2,7 @@ body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 18% 50% 32%;
+  grid-template-columns: 17.5% 50.5% 32%;
   grid-template-rows: 100%;
 }
 
@@ -99,7 +99,7 @@ body {
     left: 0;
   }
   #authorizationLink{
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
   .print-doc{
     display: none;
@@ -158,9 +158,6 @@ h5{
 }
 #authorizationLink:hover{
   /* opacity: 0.8; */
-  background: rgba(0,0,0,.1);
-}
-.print-doc:hover{
   background: rgba(0,0,0,.1);
 }
 

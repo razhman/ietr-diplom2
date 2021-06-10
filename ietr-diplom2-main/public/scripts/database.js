@@ -1,10 +1,8 @@
-
-
 async function showEngineDescription() {
   $.get('http://localhost:3001/parts2', (data) => {
     $('#info').html(data[0].description)
-    if (isAnimationStarted) stopAnimation()
     if (!isModelLoaded) loadModel()
+
   })
 }
 
@@ -98,7 +96,6 @@ async function showAnnotations(id) {
 async function showCharacteristics() {
   $.get('http://localhost:3001/characteristics', (data) => {
     $('#info').html(data[0].description)
-    if (isAnimationStarted) stopAnimation()
     if (!isModelLoaded) loadModel()
   })
 }
@@ -106,7 +103,6 @@ async function showCharacteristics() {
 async function showDiagnostics() {
   $.get('http://localhost:3001/characteristics', (data) => {
     $('#info').html(data[1].description)
-    if (isAnimationStarted) stopAnimation()
     if (!isModelLoaded) loadModel()
   })
 }
@@ -168,7 +164,6 @@ async function showTools() {
 
     procName += `</tbody></table>`
     $('#info').html(procName)
-    if (isAnimationStarted) stopAnimation()
     if (!isModelLoaded) loadModel()
   })
 }
@@ -244,7 +239,7 @@ async function getCurrentUser() {
 async function logout() {
   $.get('http://localhost:3001/logout', function (data) {
     $('#authorizationLink').html(`Войти
-    <span class="icon"><img src="/./img/icons/login.svg" style="width: 20px; height: 20px;" alt=""></span>
+    <span class="icon"><img src="/./img/icons/login.svg" style="width: 30px; height: 30px;" alt=""></span>
     `)
     document.querySelector('.autExit').style.display = 'none'
     $('#loginModal').modal('hide')
@@ -307,7 +302,7 @@ async function showComments(id) {
           allComments[i].text +
           `</div>
                 <div class="footer-comment">
-                  <a class="btn btn-dark" id="replyBtn" href="javascript:void(0)" onclick="reply('` +
+                  <a class="btn btn-dark" href="javascript:void(0)" onclick="reply('` +
           allComments[i].name +
           `')">Ответить</a>
                 </div>`
@@ -367,7 +362,6 @@ async function showDocuments() {
     }
     info += `</ul>`
     $('#info').html(info)
-    if (isAnimationStarted) stopAnimation()
   })
 }
 

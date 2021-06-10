@@ -10,20 +10,20 @@ function stopAnimation() {
   isAnimationStarted = false
 }
 
-for (let li of tree.querySelectorAll('li')) { //Находит все элементы li внутри списка в дереве
-  let span = document.createElement('span')//оборачивает в span
-  span.classList.add('show')//добавляет класс show
-  li.prepend(span)//добавляет span в начало элемента
+for (let li of tree.querySelectorAll('li')) {
+  let span = document.createElement('span')
+  span.classList.add('show')
+  li.prepend(span)
   span.append(span.nextSibling)
 }
 
 tree.onclick = (event) => {
-  if (event.target.tagName != 'SPAN') return //если кликнуто не по span
+  if (event.target.tagName != 'SPAN') return
 
   const childrenContainer = event.target.parentNode.querySelector('ul')
   const span = event.target.parentNode.querySelector('.arrow')
 
-  if (!childrenContainer) return //если нет вложенных детей
+  if (!childrenContainer) return
 
   childrenContainer.hidden = !childrenContainer.hidden
 
@@ -43,13 +43,15 @@ tree.onclick = (event) => {
 }
 
 let lastItem
-// Запоминание и оповещение о выделенном элементе и прошлом
+// Запомнинание и оповещение о выделенном элементе и прошлом
 function onTreeItemCLick() {
   if (lastItem) {
     lastItem.style.fontWeight = 'normal'
+    //onItemUnselected(lastItem.id)
   }
   this.style.fontWeight = 'bold'
   lastItem = this
+  // onItemSelected(this)
 }
 
 for (const item of document.getElementsByTagName('span')) {

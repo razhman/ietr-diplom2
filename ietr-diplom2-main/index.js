@@ -40,14 +40,7 @@ app.get('/oauth', function (req, res) {
       res.send('Failed to authenticate')
     })
 })
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*')
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  )
-  next()
-})
+
 const os = require('os')
 const { default: axios } = require('axios')
 function getIp() {
@@ -69,7 +62,7 @@ app.listen(port, () => {
 
 const sqlite3 = require('sqlite3').verbose()
 var parts = ''
-//Открытие базы данных
+//open the database
 let db = new sqlite3.Database('database.db', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
     console.log(err.message)
@@ -83,7 +76,7 @@ db.all('SELECT * FROM parts2', [], (err, rows) => {
   parts = rows
   console.log(parts)
 })
-//Получение деталей/компонентов
+
 app.get('/parts2', (req, res) => {
   res.send(parts)
 })

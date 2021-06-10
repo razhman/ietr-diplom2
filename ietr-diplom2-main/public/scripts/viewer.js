@@ -4,8 +4,9 @@ let viewer,
   isAnimationStarted = false,
   isModelLoaded = true,
   FORGE_MODEL_URN =
-    //  'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA2LTA2LTA5LTU3LTQzLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZX1NRUjM3Ml9FbmdpbmVfSm9obl9EZWVyZV9HYXRvcl84MjVpX3Y2OCUyMHYyNC5mM2Q'
-     'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA2LTEwLTE5LTIxLTE2LWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZX1NRUjM3Ml9FbmdpbmVfSm9obl9EZWVyZV9HYXRvcl84MjVpX3Y2OCUyMHY0MS5mM2Q'
+    
+    // 'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA1LTMwLTEyLTI3LTAxLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZJTIwU0NSMzcyJTIwRW5naW5lJTIwKEpvaG4lMjBEZWVyZSUyMEdhdG9yJTIwODI1aSklMjB2NjQuZjNk'
+    'urn:dXJuOmFkc2sub2JqZWN0czpvcy5vYmplY3Q6bW9kZWwyMDIxLTA2LTA2LTA5LTU3LTQzLWQ0MWQ4Y2Q5OGYwMGIyMDRlOTgwMDk5OGVjZjg0MjdlL0NIRVJZX1NRUjM3Ml9FbmdpbmVfSm9obl9EZWVyZV9HYXRvcl84MjVpX3Y2OCUyMHYyNC5mM2Q'
 const options = {
   env: 'AutodeskProduction',
   api: 'derivativeV2', // for models uploaded to EMEA change this option to 'derivativeV2_EU'
@@ -24,14 +25,14 @@ Autodesk.Viewing.Initializer(options, function () {
   loadModel()
 })
 
-function loadModel() { //загружает модель
+function loadModel() {
   $("#viewer").html(`<b></b>`);
   isModelLoaded = true
   const htmlDiv = document.getElementById('viewer')
   const config = {
     extensions: ['Autodesk.Fusion360.Animation', 'Autodesk.NPR'],
     externals: { EventsEmitter: 'EventsEmmitter' },
-    disabledExtensions: {  //выключенные инструменты в интерфейсе Viewer
+    disabledExtensions: {
       measure:false,
       viewcube:false,
       layermanage:false,
@@ -40,10 +41,12 @@ function loadModel() { //загружает модель
       hyperlink:true,
       bimwalk:true,
       fusionOrbit:true,
+      //...
       }
   }
 
   viewer = new Autodesk.Viewing.GuiViewer3D(htmlDiv, config)
+  viewer.setProgressiveRendering(false)
   const startedCode = viewer.start()
   if (startedCode > 0) {
     console.error('Failed to create a Viewer: WebGL not supported.')
@@ -56,7 +59,7 @@ function loadModel() { //загружает модель
     viewer.setLightPreset(8)
   })
 
-  Autodesk.Viewing.Document.load( //Загружает документ
+  Autodesk.Viewing.Document.load(
     FORGE_MODEL_URN,
     onDocumentLoadSuccess,
     onDocumentLoadFailure
@@ -102,7 +105,6 @@ function loadAnimation(doc, id) {
 
 function onLoadModelSuccess(model) {
   viewer.addEventListener(Autodesk.Viewing.CAMERA_CHANGE_EVENT, (e) => {
-    viewer.setProgressiveRendering(false)
     // Функция, срабатывает после полной загрузки модели
     // onTimerTick();
   })
@@ -124,6 +126,11 @@ function onDocumentLoadSuccess(doc) {
   viewer.loadDocumentNode(doc, defaultModel)
   doc2 = doc
 
+  // let animationsFolder = doc
+  //   .getRoot()
+  //   .search({ type: 'folder', role: 'animation' })
+  // if (animationsFolder.length == 0) console.error('Модель не содержит анимаций')
+  // else loadAnimation(doc, 0)
 }
 
 function onDocumentLoadFailure() {
